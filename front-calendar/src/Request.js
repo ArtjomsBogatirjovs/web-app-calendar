@@ -2,11 +2,7 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
 const MySwal = withReactContent(Swal)
-
-
 let url = "http://192.168.100.241:8090/calendar/"
-
-
 const getAllAvailabilities = async function () {
     try {
         let response = await fetch(url + 'availabilities/get') //fetch renvoie une promesse Response
@@ -22,7 +18,6 @@ const getAllAvailabilities = async function () {
 }
 
 const getAvailabilitiesOfDay = async function (data) { //data = "2022-08-02"
-
     try {
         let response = await fetch(url + "availabilities/get/day/" + data)
         if (response.ok) {
@@ -37,7 +32,6 @@ const getAvailabilitiesOfDay = async function (data) { //data = "2022-08-02"
     }
 }
 
-
 const getAllReservations = async function () {
     try {
         let response = await fetch(url + 'reservations/get')
@@ -51,9 +45,7 @@ const getAllReservations = async function () {
         console.log(e)
     }
 }
-
-// Si reservation est supprime faut recreer availability
-const postAvailability = async function (data) { //data = ReservationModel
+const postAvailability = async function (data) {
 
     let response = await fetch(url + 'availabilities/post', {
         method: 'POST',
@@ -84,20 +76,19 @@ const postReservation = async function (data) { //data = ReservationModel
 
     if (response.ok) {
         await MySwal.fire({
-            icon:"success",
+            icon: "success",
             title: "Time reserved!"
         })
     } else {
         response.text().then(text => {
             MySwal.fire({
-                icon:"error",
+                icon: "error",
                 title: text
             })
         })
     }
 
 }
-
 
 const deleteReservation = async function (data) { //data = ReservationModel
 
@@ -110,15 +101,17 @@ const deleteReservation = async function (data) { //data = ReservationModel
     })
 
     if (response.ok) {
-        let responseData = await response.json()
-        console.log(responseData)
+        await MySwal.fire('Deleted', 'Reservation cancelled', 'success');
     } else {
-        console.error('server return: ', response.status)
+        response.text().then(text => {
+            MySwal.fire({
+                icon: "error",
+                title: text
+            })
+        })
     }
 
 }
-
-
 const deleteAvailability = async function (id) { // id = id of the availability
     let response = await fetch(url + 'availabilities/delete/' + id, {
         method: 'DELETE',
@@ -133,7 +126,6 @@ const deleteAvailability = async function (id) { // id = id of the availability
     }
 }
 
-
 export {
     getAllAvailabilities,
     getAllReservations,
@@ -141,7 +133,8 @@ export {
     postAvailability,
     postReservation,
     deleteAvailability,
-    deleteReservation
+    deleteReservation,
+    url
 }
 
 //  getAllReservations()

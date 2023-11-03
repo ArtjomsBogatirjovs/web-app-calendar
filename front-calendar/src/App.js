@@ -5,11 +5,10 @@ import Time from './Time.js'
 import EntityList from './ReservedList.js'
 
 
-
 let dataArr = new Set()
 
 export function formatDate(date) {
-    var d = new Date(date),
+    let d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
@@ -22,7 +21,7 @@ export function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-function parseDatas(date) {
+function parseDate(date) {
     dataArr.clear()
     let dateFormat = formatDate(date)
     dataArr.add(dateFormat)
@@ -36,6 +35,7 @@ function App() {
 
     return (
         <div className="app">
+            <div><EntityList/></div>
             <div className="calendar-container">
                 <h1 className="title">Novus Booking Calendar</h1>
                 <Calendar
@@ -43,15 +43,13 @@ function App() {
                     value={date}
                     onClickDay={() => setShowTime(true)}
                 />
-                {parseDatas(date)}
+                {parseDate(date)}
                 <p style={{position: 'relative'}}>
                     <span>Selected date:</span>{' '} {date.toDateString()}
                 </p>
                 <Time showTime={showTime} date={date} dateform={formatDate(date)}/>
 
             </div>
-            <div><EntityList/></div>
-
         </div>
     )
 }

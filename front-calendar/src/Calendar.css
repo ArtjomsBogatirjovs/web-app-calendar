@@ -1,7 +1,6 @@
 
 .app {
     background-image: url("../public/this-is-fine.jpg");
-    background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
     top: 0px;
@@ -10,36 +9,29 @@
     left: 0px;
 }
 
+
 .calendar-container {
     padding: 20px;
     background-color: rgba(52, 150, 40, 0.73);
-
     float: left;
     margin: 0;
-    position: relative;
-    top: 50%;
+    position: fixed;
+    top: 20%;
     left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
 
 .reserved-list-container {
-    position: relative;
-    width: 80%;
-    max-width: 600px;
+    position: fixed;
+    width: 40%;
+    max-height: 25%;
     margin: 0 auto;
     padding: 20px;
     background-color: #d1dc10;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    overflow-y: auto;
 }
-
-
-.times > div:nth-child(10) {
-    float: inline-end;
-}
-
-.
 
 .app > p:nth-child(3) {
     margin-left: auto;
@@ -48,6 +40,7 @@
 
 
 .title {
+    min-width: 0;
     margin-left: auto;
     margin-right: auto;
     width: fit-content
@@ -58,6 +51,7 @@
     position: relative;
     margin-left: 15px;
     width: 400px;
+    min-height: 0;
     max-width: 100%;
     background-color: #fff;
     color: #222;
@@ -103,7 +97,6 @@
 
 .react-calendar__navigation {
     display: flex;
-    height: 44px;
     margin-bottom: 1em;
 }
 
@@ -205,4 +198,18 @@
 .react-calendar--selectRange .react-calendar__tile--hover {
     background-color: #e6e6e6;
 }
-  
+
+table {
+    width: 100%;
+    max-height: inherit;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #000;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}

@@ -5,7 +5,7 @@ import com.calendar.webcalendar.repository.ReservationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -50,21 +50,16 @@ public class ReservationsService {
 
         boolean exists = reservationsRepository.existsById(reservationsModel.getId());
 
-        // Check if the id reservation exist
         if (!exists) {
-            throw new IllegalStateException("reservation slot with id " + reservationsModel.getId() + " does not exists");
+            throw new IllegalStateException("Reservation already deleted, please update page!");
         }
 
-        //Check if the email correspond to the one use during the booking
-        Optional<ReservationsModel> reservationsByIdAndEmail = reservationsRepository
-                .findReservationsModelByIdAndEmail(
-                        reservationsModel.getId(),
-                        reservationsModel.getEmail()
-                );
+        Optional<ReservationsModel> reservationsByIdAndEmail = reservationsRepository.findReservationsModelByDateAndStart(reservationsModel.getDate(), reservationsModel.getStart());
+
 
         if (reservationsByIdAndEmail.isEmpty()) {
             throw new IllegalStateException(
-                    "the reservation slot with this id: " + reservationsModel.getId() + " does not have this email"
+                    "Unexpected error!"
             );
         }
 

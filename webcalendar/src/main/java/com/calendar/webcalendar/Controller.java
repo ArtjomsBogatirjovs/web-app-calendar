@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
@@ -33,7 +32,6 @@ public class Controller {
 
     // ########################################AVAILABILITIES############################################
 
-    //List the availabilities
     @GetMapping("/availabilities/get")
     public List<AvailabilitiesModel> getAllAvailabilities() {
         return availabilityService.getAllAvailabilities();
@@ -56,7 +54,6 @@ public class Controller {
 
     // ########################################RESERVATIONS#################################
 
-    //List the reservations
     @GetMapping("/reservations/get")
     public List<ReservationsModel> getReservation() {
         var reservations = reservationsService.getReservations();
@@ -65,12 +62,11 @@ public class Controller {
                 .collect(Collectors.toList());
     }
 
-    //create a reservation and later delete from availability
     @PostMapping("/reservations/post")
     public ResponseEntity<?> createReservation(@RequestBody ReservationsModel reservationsModel) {
         try {
             return ResponseEntity.ok(reservationsService.addNewReservation(reservationsModel));
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(e.getMessage());
         }
@@ -78,8 +74,12 @@ public class Controller {
     }
 
     @DeleteMapping(path = "/reservations/delete")
-    public ReservationsModel deleteReservation(@RequestBody ReservationsModel reservationsModel) {
-        return reservationsService.deleteSlotReservation(reservationsModel);
+    public ResponseEntity<?> deleteReservation(@RequestBody ReservationsModel reservationsModel) {
+        try {
+            return ResponseEntity.ok(reservationsService.deleteSlotReservation(reservationsModel));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(e.getMessage());
+        }
     }
-
 }
