@@ -4,7 +4,7 @@ import withReactContent from 'sweetalert2-react-content'
 const MySwal = withReactContent(Swal)
 
 
-let url = "http://192.168.100.170:8080/calendar/"
+let url = "http://192.168.100.241:8090/calendar/"
 
 
 const getAllAvailabilities = async function () {

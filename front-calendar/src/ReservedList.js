@@ -7,7 +7,7 @@ const EntityList = () => {
 
 
         const fetchData = async () => {
-            const response = await fetch("http://192.168.100.170:8080/calendar/reservations/get")
+            const response = await fetch("http://192.168.100.241:8090/calendar/reservations/get")
             const responseJson = await response.json()
 
             setEntities(responseJson)

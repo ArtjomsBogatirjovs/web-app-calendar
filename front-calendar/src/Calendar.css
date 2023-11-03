@@ -2,6 +2,7 @@
 .app {
     background-image: url("../public/this-is-fine.jpg");
     background-repeat: no-repeat;
+    background-size: cover;
     position: absolute;
     top: 0px;
     right: 0px;

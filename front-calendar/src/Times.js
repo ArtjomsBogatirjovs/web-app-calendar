@@ -51,7 +51,7 @@ function Times(props) {
 
         let day = formatDate(props.date)
         const fetchData = async (day) => {
-            const response = await fetch("http://192.168.100.170:8080/calendar/availabilities/get/day/" + day)
+            const response = await fetch("http://192.168.100.241:8090/calendar/availabilities/get/day/" + day)
             const responseJson = await response.json()
 
             setAvailabilities(responseJson)
