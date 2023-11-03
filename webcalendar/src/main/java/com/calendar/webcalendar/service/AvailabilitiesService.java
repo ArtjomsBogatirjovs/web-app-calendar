@@ -31,8 +31,6 @@ public class AvailabilitiesService {
                         availabilitiesModel.getStart()
                 );
 
-        //si elle est pas presente dans reservation alors je peux la cree
-        //si elle est dans reservation ou availabilties alors je la cree pas
         if (availableByDateAndStart.isPresent()) {
             throw new IllegalStateException("this availability slot (Date and Start) is already present");
         }
@@ -68,10 +66,4 @@ public class AvailabilitiesService {
 
         return availabilitiesOfDay;
     }
-
-    //	public List<String> hello() {
-//		//need to find a way to convert Sat Jul 30 2022 in front to 2022-07-30 the localDateFormat => then change attribut to String to LocalDate in model
-//		return List.of("Hello", "World!");
-//	}
-
 }

@@ -39,9 +39,9 @@ function Times(props) {
     }
 
     function parseDate(dates) {
-        const creneau = dates.split(' ')
-        const start = creneau[0]
-        const end = creneau[2]
+        const datesSplit = dates.split(' ')
+        const start = datesSplit[0]
+        const end = datesSplit[2]
         dataArr.add(start)
         dataArr.add(end)
     }
@@ -67,7 +67,7 @@ function Times(props) {
     //console.log(availabilities)
 
     const {register, handleSubmit} = useForm();
-    const onSubmit = data => console.log(data + 'dsadasdas');
+    const onSubmit = data => console.log(data);
 
     return (
 

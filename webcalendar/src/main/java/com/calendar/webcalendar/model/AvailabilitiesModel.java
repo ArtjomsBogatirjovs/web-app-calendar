@@ -6,7 +6,6 @@ import java.time.LocalDate;
 @Entity
 @Table
 public class AvailabilitiesModel {
-    // les types dependront du front ou database a voir (pour le moment string a cause du front)
 
     @Id
     @SequenceGenerator(
@@ -20,19 +19,14 @@ public class AvailabilitiesModel {
             generator = "availabilitiesModel_sequence"
     )
     private Long id;
-//    @Column(name = "valueDate")
-    private LocalDate date; //LocalDate
+    //    @Column(name = "valueDate")
+    private LocalDate date;
     @Column(name = "valueStart")
-    private String start; // a type for timestamp ?
+    private String start;
     @Column(name = "valueEnd")
-    private String end; // a type for timestamp ?
-
+    private String end;
 
     public AvailabilitiesModel() {
-        this.id = id;
-        this.date = LocalDate.now(); // output format of LocalDate: 2021-01-03
-        this.start = "08:00";
-        this.end = "08:15";
     }
 
     public AvailabilitiesModel(Long id, LocalDate date, String start, String end) {
@@ -42,7 +36,6 @@ public class AvailabilitiesModel {
         this.end = end;
     }
 
-    //one constructor without because the database will generate one
     public AvailabilitiesModel(LocalDate date, String start, String end) {
         this.date = date;
         this.start = start;

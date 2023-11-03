@@ -64,7 +64,6 @@ public class ReservationsModel {
         this.email = email;
     }
 
-    //one constructor without because the database will generate one
     public ReservationsModel(LocalDate date, String start, String end, String title, String email) {
         this.date = date;
         this.start = start;
