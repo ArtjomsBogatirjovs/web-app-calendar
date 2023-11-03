@@ -1,0 +1,85 @@
+#Availabilties
+###
+
+GET http://localhost:8080/calendar/availabilities/get
+Content-Type: application/json
+Accept: application/json
+
+{
+
+}
+
+###
+
+GET http://localhost:8080/calendar/availabilities/get/day/2022-08-06
+Content-Type: application/json
+Accept: application/json
+
+{
+
+}
+
+
+###
+POST http://localhost:8080/calendar/availabilities/post
+Content-Type: application/json
+Accept: application/json
+
+{
+  "date": "2022-08-10",
+  "start": "14:00",
+  "end": "14:15"
+}
+
+###
+
+DELETE http://localhost:8080/calendar/availabilities/delete/1
+Content-Type: application/json
+Accept: application/json
+
+{
+
+}
+
+###
+
+#Reservations
+
+GET http://localhost:8080/calendar/reservations/get
+Content-Type: application/json
+Accept: application/json
+
+{
+
+}
+
+###
+
+POST http://localhost:8080/calendar/reservations/post
+Content-Type: application/json
+Accept: application/json
+
+{
+  "date": "2022-08-10",
+  "start": "10:00",
+  "end": "10:15",
+  "title": "Meeting with nono",
+  "email": "arnaud.andrianalivony@epita.fr"
+}
+
+###
+
+DELETE http://localhost:8080/calendar/reservations/delete
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 1,
+  "date": "2022-08-05",
+  "start": "11:00",
+  "end": "11:15",
+  "title": "Meeting",
+  "email": "john.doe@gmail.com"
+}
+
+###
